@@ -1,0 +1,37 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-white: #fff;
+}
+
+.wrapper{
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.phone-bgc-img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.text-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-top: 50px;
+    text-align: center;
+    color: var(--main-white);
+}
+
+.text-container p {
+    margin-top: 30px;
+    font-size: 25px;
+}

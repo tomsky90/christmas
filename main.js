@@ -1,0 +1,55 @@
+class ChristmasCounter{
+    htmlElements = {
+        htmlDaysElement: document.querySelector('.days'),
+        htmlHoursElement: document.querySelector('.hours'),
+        htmlMinutesElement: document.querySelector('.minutes'),
+        htmlSecondsElement: document.querySelector('.seconds'),
+    }
+    init(){
+        const date = new Date("12/25/2022")
+        const endTime = date.getTime()
+        this.calculateTimeLeft(endTime)
+    }
+
+    calculateTimeLeft(time) {
+        setInterval(() => {
+            const timeNow = new Date().getTime();
+            const timeLeft = time - timeNow;
+            this.setDays(timeLeft);
+            this.setHours(timeLeft);
+            this.setMinutes(timeLeft);
+            this.setSeconds(timeLeft);
+        }, 1000)
+    }
+
+    setDays(time) {
+        let result = Math.round((time / (1000 * 60 * 60 * 24)))
+            this.htmlElements.htmlDaysElement.textContent = result.toFixed(0)
+    }
+    setHours(time) {
+        let result = Math.floor((time / (1000 * 60 * 60) % 24));
+        let finalResult = result.toFixed(0)
+        finalResult < 10 ? finalResult = '0' + finalResult: finalResult
+            this.htmlElements.htmlHoursElement.textContent = finalResult
+    }
+    setMinutes(time) {
+        let result = Math.floor(time / (1000 * 60 ) % 60);
+        let finalResult = result.toFixed(0)
+        finalResult < 10 ? finalResult = '0' + finalResult: finalResult
+            this.htmlElements.htmlMinutesElement.textContent = finalResult
+    }
+    setSeconds(time) {
+        let result = Math.floor((time / (1000 ) % 60));
+        let finalResult = result.toFixed(0)
+        finalResult < 10 ? finalResult = '0' + finalResult: finalResult
+            this.htmlElements.htmlSecondsElement.textContent = finalResult
+    }
+    
+}
+
+window.onload = function(){
+    const counter = new ChristmasCounter()
+    counter.init()
+}
+    
+
