@@ -1,14 +1,24 @@
+import Snow from './snowAnimation.js'
+
 class ChristmasCounter{
+    
     htmlElements = {
         htmlDaysElement: document.querySelector('.days'),
         htmlHoursElement: document.querySelector('.hours'),
         htmlMinutesElement: document.querySelector('.minutes'),
         htmlSecondsElement: document.querySelector('.seconds'),
+        htmlNavBtn: document.querySelector('.nav-btn'),
+        htmlNavBar: document.querySelector('.nav-bar'),
     }
     init(){
-        const date = new Date("12/25/2022")
-        const endTime = date.getTime()
-        this.calculateTimeLeft(endTime)
+        const date = new Date("12/25/2022");
+        const endTime = date.getTime();
+        this.calculateTimeLeft(endTime);
+        this.htmlElements.htmlNavBtn.addEventListener('click', this.toggleNavBar.bind(this))
+    }
+
+    toggleNavBar() {
+        this.htmlElements.htmlNavBar.classList.toggle('active')
     }
 
     calculateTimeLeft(time) {
