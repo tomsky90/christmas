@@ -33,7 +33,7 @@ class ChristmasCounter{
     }
 
     setDays(time) {
-        let result = Math.round((time / (1000 * 60 * 60 * 24)))
+        let result = Math.floor((time / (1000 * 60 * 60 * 24)))
             this.htmlElements.htmlDaysElement.textContent = result.toFixed(0)
     }
     setHours(time) {
