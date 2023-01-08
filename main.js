@@ -11,7 +11,7 @@ class ChristmasCounter{
         htmlNavBar: document.querySelector('.nav-bar'),
     }
     init(){
-        const date = new Date("12/25/2022");
+        const date = new Date("12/25/2023");
         const endTime = date.getTime();
         this.calculateTimeLeft(endTime);
         this.htmlElements.htmlNavBtn.addEventListener('click', this.toggleNavBar.bind(this))
