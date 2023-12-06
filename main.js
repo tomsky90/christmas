@@ -9,6 +9,9 @@ class ChristmasCounter {
     body: document.querySelector("body"),
     audio: document.querySelector("#audio"),
   };
+
+  isAudioPlaying = false;
+
   init() {
     const date = new Date("12/25/2023");
     const endTime = date.getTime();
@@ -19,6 +22,10 @@ class ChristmasCounter {
       this.toggleNavBar.bind(this)
     );
     this.htmlElements.body.addEventListener("click", (e) => {
+      if (!this.isAudioPlaying) {
+        this.htmlElements.audio.play();
+        this.isAudioPlaying = true;
+      }
       if (
         e.target.getAttribute("class") !== "nav-btn" &&
         e.target.getAttribute("class") !== "nav-bar active"
