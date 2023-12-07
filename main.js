@@ -8,6 +8,9 @@ class ChristmasCounter {
     htmlNavBar: document.querySelector(".nav-bar"),
     body: document.querySelector("body"),
     audio: document.querySelector("#audio"),
+    showCreditsBtn: document.querySelector(".credits-btn"),
+    creditsDisplay: document.querySelector(".credits-display"),
+    creditsCloseBtn: document.querySelector(".credits-dispay__close-btn"),
   };
 
   isAudioPlaying = false;
@@ -16,22 +19,40 @@ class ChristmasCounter {
     const date = new Date("12/25/2023");
     const endTime = date.getTime();
     this.calculateTimeLeft(endTime);
-
+    this.htmlElements.showCreditsBtn.addEventListener("click", () => {
+      this.htmlElements.creditsDisplay.classList.add("active");
+    });
     this.htmlElements.htmlNavBtn.addEventListener(
       "click",
       this.toggleNavBar.bind(this)
     );
     this.htmlElements.body.addEventListener("click", (e) => {
-      if (!this.isAudioPlaying) {
-        this.htmlElements.audio.play();
-        this.isAudioPlaying = true;
-      }
-      if (
-        e.target.getAttribute("class") !== "nav-btn" &&
-        e.target.getAttribute("class") !== "nav-bar active"
-      )
-        this.htmlElements.htmlNavBar.classList.remove("active");
+      this.playMusicAfterClick(e);
+      this.closeNavOutsideClick(e);
     });
+    this.htmlElements.creditsCloseBtn.addEventListener("click", () => {
+      this.hideCredits();
+    });
+  }
+
+  hideCredits() {
+    this.htmlElements.creditsDisplay.classList.remove("active");
+  }
+
+  playMusicAfterClick() {
+    if (!this.isAudioPlaying) {
+      this.htmlElements.audio.play();
+      this.isAudioPlaying = true;
+    }
+  }
+
+  closeNavOutsideClick(e) {
+    if (
+      e.target.getAttribute("class") !== "nav-btn" &&
+      e.target.getAttribute("class") !== "nav-bar active"
+    ) {
+      this.htmlElements.htmlNavBar.classList.remove("active");
+    }
   }
 
   toggleNavBar() {

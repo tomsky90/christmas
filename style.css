@@ -103,6 +103,16 @@
   transform: translateX(0);
 }
 
+.credits-btn {
+  padding: 10px 30px;
+  margin-top: 100px;
+  margin-left: 40px;
+}
+
+.credits-btn:hover {
+  cursor: pointer;
+}
+
 figure {
   margin-top: 20px;
 }
@@ -111,7 +121,7 @@ figcaption {
 }
 
 audio {
-  max-width: 190px;
+  max-width: 221px;
 }
 
 .text-container {
@@ -126,6 +136,47 @@ audio {
 .text-container p {
   margin-top: 30px;
   font-size: 25px;
+}
+
+.credits-display {
+  width: 90%;
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%);
+  height: 300px;
+  background-color: rgb(255, 255, 255, 0.8);
+  color: #333333;
+  padding: 30px 5%;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.credits-display.active {
+  display: block;
+}
+
+.credits-dispay__links-wrapper {
+  margin-top: 30px;
+}
+
+a {
+  color: #333333;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.credits-dispay__heading {
+  font-size: 29px;
+}
+
+.credits-dispay__close-btn {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 20px;
+  padding: 0 5px;
 }
 
 @media only screen and (min-width: 600px) {
@@ -156,5 +207,14 @@ audio {
     width: 30px;
     height: 30px;
     z-index: 9;
+  }
+
+  .credits-display {
+    top: 50%;
+    width: 50%;
+  }
+
+  .credits-dispay__heading {
+    font-size: 35px;
   }
 }
